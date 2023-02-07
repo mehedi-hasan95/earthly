@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import ReactImageMagnify from "react-image-magnify";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/counterSlice";
 
 const Modal = ({ products }) => {
     const [currentImage, setCurrentImage] = useState("");
@@ -12,6 +14,10 @@ const Modal = ({ products }) => {
     }, [products]);
 
     const [quantity, setQuantity] = useState(1);
+
+    // Redux
+    const dispatch = useDispatch();
+
     if (Object.keys(products).length !== 0) {
         const productImages = products?.images;
         return (
@@ -21,11 +27,6 @@ const Modal = ({ products }) => {
                     <div className="modal-box w-11/12 max-w-5xl">
                         <div className="grid grid-cols-2 gap-10">
                             <div>
-                                {/* <img
-                                    src={currentImage}
-                                    alt=""
-                                    className="h-[400px]"
-                                /> */}
                                 {/* Zoom Image  */}
                                 <ReactImageMagnify
                                     {...{
@@ -104,7 +105,21 @@ const Modal = ({ products }) => {
                                         </button>
                                     </div>
                                     <div className="mt-10">
-                                        <button className="px-7 py-2 bg-blue-400 flex justify-center items-center gap-3 text-white font-semibold rounded-md">
+                                        <button
+                                            onClick={() =>
+                                                dispatch(
+                                                    addToCart({
+                                                        id: products.id,
+                                                        title: products.title,
+                                                        price: products.price,
+                                                        desc: products.description,
+                                                        img: products.images[0],
+                                                        quantity,
+                                                    })
+                                                )
+                                            }
+                                            className="px-7 py-2 bg-blue-400 flex justify-center items-center gap-3 text-white font-semibold rounded-md"
+                                        >
                                             <FaShoppingCart /> Add to Cart
                                         </button>
                                     </div>

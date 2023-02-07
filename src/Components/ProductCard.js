@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/counterSlice";
 
 const ProductCard = ({ product, setProducts }) => {
+    const [quantity, setQuantity] = useState(1);
+
+    // Redux
+    const dispatch = useDispatch();
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -26,7 +32,21 @@ const ProductCard = ({ product, setProducts }) => {
                 <div className="card-body">
                     <h2 className="card-title">{product.title}</h2>
                     <p className="text-xl font-bold">${product.price}</p>
-                    <p className="font-bold bg-black btn hover:bg-gray-500 transition duration-300">
+                    <p
+                        onClick={() =>
+                            dispatch(
+                                addToCart({
+                                    id: product.id,
+                                    title: product.title,
+                                    price: product.price,
+                                    desc: product.description,
+                                    img: product.images[0],
+                                    quantity,
+                                })
+                            )
+                        }
+                        className="font-bold bg-black btn hover:bg-gray-500 transition duration-300"
+                    >
                         Add To Cart
                     </p>
                 </div>
