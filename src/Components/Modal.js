@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import ReactImageMagnify from "react-image-magnify";
 
 const Modal = ({ products }) => {
     const [currentImage, setCurrentImage] = useState("");
@@ -20,10 +21,25 @@ const Modal = ({ products }) => {
                     <div className="modal-box w-11/12 max-w-5xl">
                         <div className="grid grid-cols-2 gap-10">
                             <div>
-                                <img
+                                {/* <img
                                     src={currentImage}
                                     alt=""
                                     className="h-[400px]"
+                                /> */}
+                                {/* Zoom Image  */}
+                                <ReactImageMagnify
+                                    {...{
+                                        smallImage: {
+                                            isFluidWidth: true,
+                                            src: currentImage,
+                                            height: 400,
+                                        },
+                                        largeImage: {
+                                            src: currentImage,
+                                            width: 600,
+                                            height: 900,
+                                        },
+                                    }}
                                 />
                                 <div className="grid grid-cols-6">
                                     {productImages.map((image) => (
