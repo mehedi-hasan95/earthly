@@ -1,5 +1,6 @@
 import React from "react";
 import NavMenu from "../../Components/NavMenu";
+import Paralax from "../../Components/Paralax";
 import Products from "../../Components/Products";
 
 const Shop = () => {
@@ -7,6 +8,7 @@ const Shop = () => {
         <div className="">
             <NavMenu />
             <Products />
+            <Paralax />
         </div>
     );
 };

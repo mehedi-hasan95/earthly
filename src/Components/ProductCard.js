@@ -32,7 +32,12 @@ const ProductCard = ({ product, setProducts }) => {
                 <div className="card-body">
                     <h2 className="card-title">{product.title}</h2>
                     <p className="text-xl font-bold">${product.price}</p>
-                    <p
+                    {product?.bestSell && (
+                        <span className="-top-2 left-2 bg-white text-teal-600 absolute z-10 px-3 py-1 font-semibold rounded-lg">
+                            Best Seller
+                        </span>
+                    )}
+                    <button
                         onClick={() =>
                             dispatch(
                                 addToCart({
@@ -46,9 +51,10 @@ const ProductCard = ({ product, setProducts }) => {
                             )
                         }
                         className="font-bold bg-black btn hover:bg-gray-500 transition duration-300"
+                        disabled={product.stock === 0}
                     >
                         Add To Cart
-                    </p>
+                    </button>
                 </div>
             </div>
         </div>
