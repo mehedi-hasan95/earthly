@@ -19,3 +19,10 @@ code {
 .img-card:hover .img2 {
     display: inline;
 }
+
+.fixedBg {
+    /* height: 500px; */
+    width: 100%;
+    background-image: url("https://weareosm.com/wp-content/uploads/2021/07/osmweb-25-2.webp");
+    background-attachment: fixed;
+}
