@@ -14,7 +14,7 @@ const NavMenu = () => {
                     <p>Sustainable products at affordable prices</p>
                 </div>
                 <div className="flex gap-5 items-center">
-                    <a href="#" alt="#">
+                    <a href="/" alt="#">
                         Home
                     </a>
                     <a href="#" alt="#">

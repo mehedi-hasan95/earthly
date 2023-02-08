@@ -9,8 +9,8 @@ const Shop = () => {
         <div>
             <NavMenu />
             <Products />
-            <Paralax />
             <HeroBg />
+            <Paralax />
         </div>
     );
 };
